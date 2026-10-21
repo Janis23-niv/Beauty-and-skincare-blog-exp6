@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blush & Bloom | Beauty Blog</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fffaf8;
+            color: #493b3c;
+            transition: background 1s;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 8%;
+            background: white;
+            border-bottom: 1px solid #f3e5e2;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            color: #b64f70;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #493b3c;
+            margin-left: 24px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #c45c7e;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 410px;
+            padding: 65px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            background: linear-gradient(120deg, #fce5e8, #fff3ed);
+        }
+
+        .hero-text {
+            max-width: 540px;
+        }
+
+        .tag {
+            color: #b64f70;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.15;
+            margin: 18px 0;
+            color: #513b40;
+        }
+
+        .hero p {
+            line-height: 1.8;
+            color: #755f63;
+            margin-bottom: 25px;
+        }
+
+        .hero button {
+            padding: 13px 25px;
+            border: none;
+            border-radius: 30px;
+            background: #b64f70;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .hero button:hover {
+            background: #923b58;
+        }
+
+        .hero img {
+            width: 38%;
+            max-width: 400px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 48% 48% 12px 12px;
+            box-shadow: 12px 12px 0 #e9bdc7;
+        }
+
+        /* Blog section */
+        .section {
+            padding: 60px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            color: #513b40;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #8c7779;
+        }
+
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid #f1e6e2;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 30px #b64f701c;
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 205px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-content {
+            padding: 22px;
+        }
+
+        .category {
+            color: #b64f70;
+            background: #fce9ed;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .blog-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
+            margin: 17px 0 10px;
+        }
+
+        .blog-content p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #806e70;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 16px;
+            color: #b64f70;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Daily tip */
+        .tip-section {
+            margin: 0 8% 55px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 18px;
+            background: #f9e8eb;
+        }
+
+        #tip {
+            margin-top: 15px;
+            line-height: 1.8;
+            cursor: pointer;
+            transition: font-size 0.3s;
+        }
+
+        #clock {
+            font-weight: bold;
+            color: #b64f70;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #513b40;
+            color: white;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero img {
+                width: 85%;
+                max-width: 450px;
+            }
+
+            .blog-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            nav a {
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 40px 6%;
+            }
+
+            .hero {
+                padding: 45px 6%;
+            }
+
+            .hero img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">♡ Blush & Bloom</div>
+        <div>
+            <a href="#home">Home</a>
+            <a href="#blogs">Blogs</a>
+            <a href="#daily-tip">Daily Tips</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <span class="tag">Your little beauty corner</span>
+
+            <h1>Glow Naturally,<br>Shine Beautifully.</h1>
+
+            <p>
+                Discover simple skincare routines, beauty secrets and
+                self-care rituals that help you feel confident in your
+                own skin. Your glow begins with you!
+            </p>
+
+            <button onclick="showWelcome()">
+                Explore Beauty ✨
+            </button>
+        </div>
+
+        <img
+            src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=80"
+            alt="Skincare products and beauty essentials">
+    </section>
+
+    <section class="section" id="blogs">
+        <div class="section-heading">
+            <span class="tag">Read • Learn • Glow</span>
+            <h2>Our Beauty Journal</h2>
+            <p>A little knowledge for healthier-looking skin.</p>
+        </div>
+
+        <div class="blog-container" id="blogContainer"></div>
+    </section>
+
+    <section class="tip-section" id="daily-tip">
+        <span class="tag">A gentle reminder</span>
+        <h2>Today's Glow Tip 🌷</h2>
+
+        <p id="tip"
+           onmouseover="incSize()"
+           onmouseout="decSize()">
+            Cleanse gently, moisturize regularly and use sunscreen
+            during the day. Consistency matters more than a complicated routine!
+        </p>
+
+        <p style="margin-top: 18px;">
+            Current time: <span id="clock">Loading...</span>
+        </p>
+    </section>
+
+    <footer>
+        <h3 style="font-family: 'Playfair Display', serif;">
+            Blush & Bloom ♡
+        </h3>
+        <p>Your daily dose of beauty, confidence and self-care.</p>
+        <p>Made with love | Beauty & Skincare Blog</p>
+    </footer>
+
+    <script>
+        // 1. Array of blog objects
+        var blogs = [
+            {
+                title: "The Perfect Daily Routine",
+                category: "SKINCARE",
+                description:
+                    "Explore the basics of cleansing, moisturizing and sun protection for a simple everyday routine.",
+                image:
+                    "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "The Art of Natural Beauty",
+                category: "BEAUTY TIPS",
+                description:
+                    "Discover easy beauty habits and gentle self-care rituals that make you feel refreshed.",
+                image:
+                    "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "Know Your Skin Type",
+                category: "SKIN EDUCATION",
+                description:
+                    "Learn about oily, dry and combination skin to make more informed skincare choices.",
+                image:
+                    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80"
+            }
+        ];
+
+        // 2. Display blogs using a loop
+        var output = "";
+
+        for (var i = 0; i < blogs.length; i++) {
+            output += `
+                <article class="blog-card">
+                    <img src="${blogs[i].image}"
+                         alt="${blogs[i].title}"
+                         onerror="this.style.display='none'">
+
+                    <div class="blog-content">
+                        <span class="category">
+                            ${blogs[i].category}
+                        </span>
+
+                        <h3>${blogs[i].title}</h3>
+
+                        <p>${blogs[i].description}</p>
+
+                        <span class="read-more"
+                              onclick="readBlog(${i})">
+                            Read more ↗
+                        </span>
+                    </div>
+                </article>
+            `;
+        }
+
+        document.getElementById("blogContainer").innerHTML = output;
+
+        // 3. Digital clock using Date and setInterval
+        function displayTime() {
+            var now = new Date();
+
+            document.getElementById("clock").innerHTML =
+                now.toLocaleTimeString();
+        }
+
+        displayTime();
+        setInterval(displayTime, 1000);
+
+        // 4. Mouse events to change font size
+        function incSize() {
+            document.getElementById("tip").style.fontSize = "20px";
+        }
+
+        function decSize() {
+            document.getElementById("tip").style.fontSize = "16px";
+        }
+
+        // 5. setTimeout example
+        function showWelcome() {
+            document.getElementById("blogs").scrollIntoView({
+                behavior: "smooth"
+            });
+
+            setTimeout(function () {
+                alert("Welcome to your little beauty corner! ♡");
+            }, 600);
+        }
+
+        // 6. Display blog details on click
+        function readBlog(index) {
+            alert(
+                blogs[index].title + "\n\n" +
+                blogs[index].description
+            );
+        }
+
+        // 7. Change background colour every 30 seconds
+        var colors = [
+            "#fffaf8",
+            "#fff3f5",
+            "#fff7ef",
+            "#fdf1f6"
+        ];
+
+        var colorIndex = 0;
+
+        function changeBackground() {
+            colorIndex = (colorIndex + 1) % colors.length;
+            document.body.style.backgroundColor = colors[colorIndex];
+        }
+
+        setInterval(changeBackground, 30000);
+    </script>
+
+</body>
+</html>
